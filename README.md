@@ -41,7 +41,7 @@ CREATE TABLE retail_sales_analysis (
     cogs FLOAT NULL,
     total_sale FLOAT NULL
 );
-'''
+
 
 **Table Columns:**
 - `transaction_id` (Primary Key)  
@@ -79,7 +79,7 @@ FROM (
     GROUP BY EXTRACT(YEAR FROM sale_date), EXTRACT(MONTH FROM sale_date)
 ) AS t1
 WHERE rnk = 1;
-'''
+
 
 ### 2. Data Cleaning
 -- Check for NULL values
@@ -97,7 +97,7 @@ WHERE
     OR price_per_unit IS NULL
     OR cogs IS NULL
     OR total_sale IS NULL;
-'''
+
 ### 3. Data Exploration
 -- Total records
 SELECT COUNT(*) AS total_sale FROM retail_sales_analysis;
@@ -119,7 +119,7 @@ SELECT DISTINCT category FROM retail_sales_analysis;
 SELECT * 
 FROM retail_sales_analysis
 WHERE sale_date = '2022-11-05';
-'''
+
 ### Q2. Clothing sales >4 units in Nov-2022
 '''sql
 SELECT *
@@ -127,7 +127,7 @@ FROM retail_sales_analysis
 WHERE category = 'Clothing'
   AND TO_CHAR(sale_date, 'YYYY-MM') = '2022-11'
   AND quantity >= 4;
-'''
+
 
 ### Q3. Total sales per category
 '''sql
@@ -137,7 +137,7 @@ SELECT
     COUNT(*) AS total_orders
 FROM retail_sales_analysis
 GROUP BY category;
-'''
+
 
 ## 📑 Findings
 
